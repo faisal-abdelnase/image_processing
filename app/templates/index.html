@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Algorithms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        button {
+            padding: 15px 25px; 
+            margin-bottom: 10px; 
+            font-size: 16px;
+            flex: 1 1 calc(25% - 10px); 
+            box-sizing: border-box;
+            border-radius: 5px; 
+            border: 1px solid #ccc; 
+            background-color: #f9f9f9; 
+            cursor: pointer;
+        }
+
+        button:hover {
+        background-color: #e0e0e0; 
+        }
+        img {
+            margin-top: 20px;
+            max-width: 80%;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload and Process Image</h1>
+
+    <!-- Upload Form -->
+    <form method="POST" enctype="multipart/form-data">
+        <label for="file">Upload an image:</label>
+        <input type="file" name="file" id="file">
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if uploaded_filename %}
+        <h2>Uploaded Image:</h2>
+        <img src="{{ url_for('uploaded_image', filename=uploaded_filename) }}" alt="Uploaded Image" style="max-width: 300px;">
+        
+        <!-- Processing Buttons -->
+        <h1>Image Processing Algorithms</h1>
+        <div class="button-container">
+            <form action="/" method="POST">
+                <input type="hidden" name="uploaded_image_filename" value="{{ uploaded_filename }}">
+                <button type="submit" name="button_id" value="button1">Halftoning</button>
+                <button type="submit" name="button_id" value="button2">Histogram</button>
+                <button type="submit" name="button_id" value="button3">Sobel</button>
+                <button type="submit" name="button_id" value="button4">Prewitt</button>
+                <button type="submit" name="button_id" value="button5">Kirsch</button>
+                <button type="submit" name="button_id" value="button6">Homogeneity</button>
+                <button type="submit" name="button_id" value="button7">Difference</button>
+                <button type="submit" name="button_id" value="button8">Difference Gaussian</button>
+                <button type="submit" name="button_id" value="button9">Contrast</button>
+                <button type="submit" name="button_id" value="button10">Variance</button>
+                <button type="submit" name="button_id" value="button11">Range</button>
+                <button type="submit" name="button_id" value="button12">High Pass</button>
+                <button type="submit" name="button_id" value="button13">Low Pass</button>
+                <button type="submit" name="button_id" value="button14">Median Filter</button>
+                <button type="submit" name="button_id" value="button15">Add</button>
+                <button type="submit" name="button_id" value="button16">Subtract Filter</button>
+                <button type="submit" name="button_id" value="button17">Invert</button>
+                <button type="submit" name="button_id" value="button18">Manual Segmentation</button>
+                <button type="submit" name="button_id" value="button19">Histogram Peak</button>
+                <button type="submit" name="button_id" value="button20">Histogram Valley</button>
+                <button type="submit" name="button_id" value="button21">Adaptive Histogram</button>
+            </form>
+        </div>
+    {% endif %}
+
+    <!-- Show the processed image -->
+    {% if processed_image_filename %}
+        <h2>Processed Image:</h2>
+        <img src="{{ url_for('processed_image', filename=processed_image_filename) }}" alt="Processed Image" style="max-width: 300px;">
+    {% endif %}
+</body>
+</html>
