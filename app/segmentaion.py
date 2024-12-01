@@ -2,7 +2,7 @@ import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
 import cv2
-from app.function import FeatureFunction
+from function import FeatureFunction
 from scipy.signal import find_peaks
 
 class Segmentaion:
