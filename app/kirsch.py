@@ -2,7 +2,7 @@ import numpy as np
 from scipy.signal import convolve2d
 from PIL import Image
 import matplotlib.pyplot as plt
-from app.function import FeatureFunction
+from function import FeatureFunction
 
 
 class Kirsch:

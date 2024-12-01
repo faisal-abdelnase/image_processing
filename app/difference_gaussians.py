@@ -3,7 +3,7 @@ import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
 import cv2
-from app.function import FeatureFunction
+from function import FeatureFunction
 
 class DifferenceGaussians:
     def __init__(self, root=None):
